@@ -1,18 +1,25 @@
 <div class="container">
-<mat-card class="product-card">
-<mat-card-title>MacBook</mat-card-title>
-<img mat-card-image src="/assets/images/mcbook.jpg" alt="product-image" width="300" height="200"/>
-<mat-card-content>
-    <p>Price: 200</p>
-    <p>Chip: M1</p>
-    <p>Year: 2020</p>
-</mat-card-content>
-<mat-card-actions>
-    <button class="button" mat-flat-button>Add to cart</button>
-    <button class="button" mat-flat-button>Show details</button>
-</mat-card-actions>
-</mat-card>
+  @for (product of products; track product.id) {
+  <mat-card class="product-card">
+    <mat-card-title>{{ product.title }}</mat-card-title>
+    <img
+      mat-card-image
+      src="{{ product.image }}"
+      alt="product-image"
+      width="300"
+      height="200"
+    />
+    <mat-card-content>
+      <p>{{ product.price | currency }}</p>
+      <p>{{ product.configure.chip }}</p>
 
+      <p>Year: {{ product.year }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="button" mat-flat-button>Add to cart</button>
+      <button class="button" mat-flat-button [routerLink]="['/products', product.id]">Show details</button>
+    </mat-card-actions>
+  </mat-card>
 
-
+  }
 </div>

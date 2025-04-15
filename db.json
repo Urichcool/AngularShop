@@ -5,6 +5,7 @@
             "title": "MacBook Air",
             "price": 900,
             "image": "/assets/images/mcbook.jpg",
+            "year" : 2020,
             "configure": {
                 "chip": "M1",
                 "SSD": "256 GB",
@@ -17,6 +18,7 @@
             "title": "MacBook Pro",
             "price": 1300,
             "image": "/assets/images/mcbook.jpg",
+            "year" : 2021,
             "configure": {
                 "chip": "Intel",
                 "SSD": "256 GB",
@@ -24,10 +26,11 @@
                 "display": "Retina"
             }
         },        {
-            "id":1,
+            "id":3,
             "title": "MacBook Pro (Intel)",
             "price": 1700,
             "image": "/assets/images/mcbook.jpg",
+            "year" : 2022,
             "configure": {
                 "chip": "Intel",
                 "SSD": "256 GB",
@@ -35,10 +38,11 @@
                 "display": "Retina"
             }
         },        {
-            "id":1,
+            "id":4,
             "title": "MacBook Air",
             "price": 900,
             "image": "/assets/images/mcbook.jpg",
+            "year" : 2023,
             "configure": {
                 "chip": "M1",
                 "SSD": "256 GB",
