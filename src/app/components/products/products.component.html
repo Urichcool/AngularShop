@@ -1,4 +1,12 @@
 <div class="container">
+
+  <mat-toolbar color="primary" *ngIf="canEdit">
+    <mat-toolbar-row>
+      <span class="example-spacer"></span>
+      <button class="button" mat-flat-button >Add Product</button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
   @for (product of products; track product.id) {
   <mat-card class="product-card">
     <mat-card-title>{{ product.title }}</mat-card-title>

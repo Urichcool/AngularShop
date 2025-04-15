@@ -3,8 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardImage, MatCardModule } from '@angular/material/card';
 import { ProductsService } from '../../services/products.service';
 import { IProduct } from '../../interfaces/products.interface';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-products',
@@ -14,11 +15,15 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     CurrencyPipe,
     RouterLink,
+    MatToolbarModule,
+    NgIf,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
+  canEdit: boolean = false;
+  canView: boolean = false;
   products!: IProduct[];
   productsService = inject(ProductsService);
 
