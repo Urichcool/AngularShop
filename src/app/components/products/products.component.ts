@@ -6,6 +6,8 @@ import { IProduct } from '../../interfaces/products.interface';
 import { CurrencyPipe, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-products',
@@ -22,14 +24,23 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  canEdit: boolean = false;
+  canEdit: boolean = true;
   canView: boolean = false;
   products!: IProduct[];
   productsService = inject(ProductsService);
+  readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((data) => {
       this.products = data;
     });
+
+   
+  }
+  openDialog(): void {
+    let dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "500px"
+    
+    const dialogRef = this.dialog.open(DialogBoxComponent)
   }
 }
