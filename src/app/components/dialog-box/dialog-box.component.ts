@@ -43,14 +43,26 @@ display:new FormControl(''),
 
 
   readonly dialogRef = inject(MatDialogRef<DialogBoxComponent>);
-  readonly data = inject<any>(MAT_DIALOG_DATA);
+   data = inject<any>(MAT_DIALOG_DATA);
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   onSubmit():void{
-console.log(this.data)
+    this.data = {
+      title: this.myForm.value.title,
+      price: this.myForm.value.price,
+      year: this.myForm.value.year,
+      configure: {
+        chip: this.myForm.value.chip,
+        SSD: this.myForm.value.ssd,
+        memory: this.myForm.value.memory,
+        display: this.myForm.value.display
+      }
+   
+    }
+
   }
 
   ngOnInit(): void {}

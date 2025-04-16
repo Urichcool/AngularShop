@@ -4,17 +4,32 @@
     <input matInput formControlName="title" />
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" />
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" />
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" />
+    <mat-label>Year</mat-label>
+    <input matInput formControlName="year" />
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" />
+    <mat-label>Chip</mat-label>
+    <input matInput formControlName="chip" />
   </mat-form-field>
-  <button class="button" mat-flat-button type="submit">Add Product</button>
-  <button class="button" mat-flat-button (click)="onNoClick()">Cancel</button>
+  <mat-form-field class="example-full-width">
+    <mat-label>SSD</mat-label>
+    <input matInput formControlName="ssd" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Memory</mat-label>
+    <input matInput formControlName="memory" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Display</mat-label>
+    <input matInput formControlName="display" />
+  </mat-form-field>
+  <mat-dialog-actions class="dialog-buttons">
+    <button class="button" mat-flat-button type="submit">Add Product</button>
+    <button class="button" mat-flat-button (click)="onNoClick()">Cancel</button>
+  </mat-dialog-actions>
+  
 </form>

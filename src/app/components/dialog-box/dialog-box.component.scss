@@ -1,9 +1,22 @@
+:host{
+  display: flex;
+ padding: 35px;
+  align-items: center;
+  flex-direction: column;
+}
+
 .example-form {
   width: 400px;
+
 }
 
 .example-full-width {
   width: 400px;
+}
+
+.dialog-buttons{
+  display: flex;
+  justify-content: center;
 }
 
 .button {
@@ -11,3 +24,5 @@
     margin-right: 5px;
   }
 }
+
+
