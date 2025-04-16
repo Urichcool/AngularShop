@@ -1,0 +1,13 @@
+.example-form {
+  width: 400px;
+}
+
+.example-full-width {
+  width: 400px;
+}
+
+.button {
+  &:first-of-type {
+    margin-right: 5px;
+  }
+}

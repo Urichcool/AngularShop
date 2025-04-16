@@ -40,7 +40,10 @@ export class ProductsComponent implements OnInit {
   openDialog(): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = "500px"
+    dialogConfig.height = "500px"
+    dialogConfig.disableClose = true;
+
     
-    const dialogRef = this.dialog.open(DialogBoxComponent)
+    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
   }
 }
