@@ -49,6 +49,6 @@ export class ProductsComponent implements OnInit {
   }
 
   postData(data:IProduct){
-    this.productsService.postProduct(data).subscribe(() => this.products.push(data))
+    this.productsService.postProduct(data).subscribe()
   }
 }
