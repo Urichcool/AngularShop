@@ -3,26 +3,13 @@
     {
       "id": "1",
       "title": "MacBook Air",
-      "price": 900,
+      "price": "1700",
+      "year": "2027",
       "image": "/assets/images/mcbook.jpg",
-      "year": 2020,
       "configure": {
         "chip": "M1",
-        "SSD": "256 GB",
+        "SSD": "",
         "memory": "8 GB",
-        "display": "Retina"
-      }
-    },
-    {
-      "id": "2",
-      "title": "MacBook Pro",
-      "price": 1300,
-      "image": "/assets/images/mcbook.jpg",
-      "year": 2021,
-      "configure": {
-        "chip": "Intel",
-        "SSD": "256 GB",
-        "memory": "16 GB",
         "display": "Retina"
       }
     },
@@ -42,14 +29,40 @@
     {
       "id": "4",
       "title": "MacBook Air",
-      "price": 900,
-      "image": "/assets/images/mcbook.jpg",
+      "price": "800",
       "year": 2023,
+      "image": "/assets/images/mcbook.jpg",
       "configure": {
         "chip": "M1",
-        "SSD": "256 GB",
+        "SSD": "",
         "memory": "16 GB",
         "display": "Retina"
+      }
+    },
+    {
+      "id": null,
+      "title": "pojop",
+      "price": "231234123",
+      "year": "312321",
+      "image": "/assets/images/mcbook.jpg",
+      "configure": {
+        "chip": "lmknlkn",
+        "SSD": "lknjlkjlk",
+        "memory": "ljklkjlk",
+        "display": "kljlkjkljkl"
+      }
+    },
+    {
+      "id": null,
+      "title": "etterte",
+      "price": "231234123",
+      "year": "312321",
+      "image": "/assets/images/mcbook.jpg",
+      "configure": {
+        "chip": "lmknlkn",
+        "SSD": "",
+        "memory": "ljklkjlk",
+        "display": "kljlkjkljkl"
       }
     }
   ]

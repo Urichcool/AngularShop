@@ -28,7 +28,7 @@
     <input matInput formControlName="display" />
   </mat-form-field>
   <mat-dialog-actions class="dialog-buttons">
-    <button class="button" mat-flat-button>Add Product</button>
+    <button class="button" mat-flat-button>{{isNew ? "Add Product" : "Update"}}</button>
     <button class="button" mat-flat-button (click)="onNoClick()" type="button">Cancel</button>
   </mat-dialog-actions>
   

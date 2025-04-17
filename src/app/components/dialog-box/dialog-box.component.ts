@@ -26,42 +26,30 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './dialog-box.component.scss',
 })
 export class DialogBoxComponent implements OnInit {
-  myForm: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    price: new FormControl(''),
-    year: new FormControl(''),
-    chip: new FormControl(''),
-    ssd: new FormControl(''),
-    memory: new FormControl(''),
-    display: new FormControl(''),
-    image: new FormControl("/assets/images/mcbook.jpg")
-  });
-
-  // export interface IProduct {
-  //   id: number;
-  //   title: string;
-  //   price: number;
-  //   image?: string;
-  //   year: number;
-  //   configure: IProductsConfig;
-  // }
-
-  // export interface IProductsConfig{
-  //     chip: string;
-  //     SSD: string;
-  //     memory: string;
-  //     display: string;
-  // }
 
   readonly dialogRef = inject(MatDialogRef<DialogBoxComponent>);
   data = inject<any>(MAT_DIALOG_DATA);
+  myForm: FormGroup = new FormGroup({
+    id: new FormControl(this.data?.id ?? null),
+    title: new FormControl(this.data?.title ?? ""),
+    price: new FormControl(this.data?.price ?? ""),
+    year: new FormControl(this.data?.year ?? ""),
+    chip: new FormControl(this.data?.configure.chip ?? ""),
+    ssd: new FormControl(this.data?.configure.ssd ?? ""),
+    memory: new FormControl(this.data?.configure.memory ?? ""),
+    display: new FormControl(this.data?.configure.display ?? ""),
+    image: new FormControl("/assets/images/mcbook.jpg")
+  });
+
+  isNew:boolean = true;
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 
   onSubmit(): void {
     this.data = {
+      id:this.myForm.value.id,
       title: this.myForm.value.title,
       price: this.myForm.value.price,
       year: this.myForm.value.year,
@@ -76,5 +64,7 @@ export class DialogBoxComponent implements OnInit {
     this.dialogRef.close(this.data);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.data) this.isNew = false
+  }
 }

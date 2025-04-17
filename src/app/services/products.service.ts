@@ -21,4 +21,12 @@ export class ProductsService {
   postProduct(product:IProduct){
     return this.http.post<IProduct>(this.url, product)
   }
+
+  deleteProduct(id:number){
+    return this.http.delete<any>(`${this.url}/${id}`)
+  }
+
+  updateProduct(product:IProduct){
+    return this.http.put<IProduct>(`${this.url}/${product.id}`, product)
+  }
 }

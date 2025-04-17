@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-products',
@@ -19,6 +20,7 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
     RouterLink,
     MatToolbarModule,
     NgIf,
+    MatMenuModule
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
@@ -34,21 +36,39 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProducts().subscribe((data) => {
       this.products = data;
     });
-
-   
   }
-  openDialog(): void {
+
+deleteItem(id:number){
+this.productsService.deleteProduct(id).subscribe((data) => console.log(data)
+)
+}
+
+  openDialog(product? : IProduct): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = "500px"
     dialogConfig.disableClose = true;
+    dialogConfig.data = product
 
     
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
 
-    dialogRef.afterClosed().subscribe((data) => this.postData(data))
+    dialogRef.afterClosed().subscribe((data) => {
+      if(data && data.id){
+        this.updateData(data)
+        
+      }
+      else if(data){
+        this.postData(data)
+      }
+    })
   }
 
   postData(data:IProduct){
     this.productsService.postProduct(data).subscribe()
   }
+
+updateData(product:IProduct){
+  this.productsService.updateProduct(product).subscribe()
+}
+
 }
