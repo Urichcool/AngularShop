@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterLink,
     MatToolbarModule,
     NgIf,
-    MatMenuModule
+    MatMenuModule,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
@@ -31,6 +32,8 @@ export class ProductsComponent implements OnInit {
   products!: IProduct[];
   productsService = inject(ProductsService);
   readonly dialog = inject(MatDialog);
+  sharedDataService = inject(SharedDataService);
+  isNewProduct: boolean = true;
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((data) => {
@@ -38,37 +41,46 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-deleteItem(id:number){
-this.productsService.deleteProduct(id).subscribe((data) => console.log(data)
-)
-}
+  deleteItem(id: number) {
+    this.productsService
+      .deleteProduct(id)
+      .subscribe((data) => console.log(data));
+      this.reloadPage();
+  }
 
-  openDialog(product? : IProduct): void {
+  openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "500px"
+    dialogConfig.width = '500px';
     dialogConfig.disableClose = true;
-    dialogConfig.data = product
+    dialogConfig.data = product;
 
-    
-    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
+    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
-      if(data && data.id){
-        this.updateData(data)
-        
+      this.sharedDataService.currentData$.subscribe((data) => {
+        this.isNewProduct = data;
+      });
+      
+      if (data) {
+        if (this.isNewProduct) {
+          this.postData(data);
+        } else {
+          this.updateData(data);
+        }
+        this.reloadPage();
       }
-      else if(data){
-        this.postData(data)
-      }
-    })
+    });
   }
 
-  postData(data:IProduct){
-    this.productsService.postProduct(data).subscribe()
+  reloadPage(){
+    window.location.reload()
   }
 
-updateData(product:IProduct){
-  this.productsService.updateProduct(product).subscribe()
-}
+  postData(data: IProduct) {
+    this.productsService.postProduct(data).subscribe();
+  }
 
+  updateData(product: IProduct) {
+    this.productsService.updateProduct(product).subscribe();
+  }
 }

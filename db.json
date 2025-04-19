@@ -14,19 +14,6 @@
       }
     },
     {
-      "id": "3",
-      "title": "MacBook Pro (Intel)",
-      "price": 1700,
-      "image": "/assets/images/mcbook.jpg",
-      "year": 2022,
-      "configure": {
-        "chip": "Intel",
-        "SSD": "256 GB",
-        "memory": "16 GB",
-        "display": "Retina"
-      }
-    },
-    {
       "id": "4",
       "title": "MacBook Air",
       "price": "800",
@@ -37,32 +24,6 @@
         "SSD": "",
         "memory": "16 GB",
         "display": "Retina"
-      }
-    },
-    {
-      "id": null,
-      "title": "pojop",
-      "price": "231234123",
-      "year": "312321",
-      "image": "/assets/images/mcbook.jpg",
-      "configure": {
-        "chip": "lmknlkn",
-        "SSD": "lknjlkjlk",
-        "memory": "ljklkjlk",
-        "display": "kljlkjkljkl"
-      }
-    },
-    {
-      "id": null,
-      "title": "etterte",
-      "price": "231234123",
-      "year": "312321",
-      "image": "/assets/images/mcbook.jpg",
-      "configure": {
-        "chip": "lmknlkn",
-        "SSD": "",
-        "memory": "ljklkjlk",
-        "display": "kljlkjkljkl"
       }
     }
   ]

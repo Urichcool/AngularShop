@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -12,6 +12,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-dialog-box',
@@ -26,11 +27,12 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './dialog-box.component.scss',
 })
 export class DialogBoxComponent implements OnInit {
-
+  isNew:boolean = true;
+  sharedDataService = inject(SharedDataService)
   readonly dialogRef = inject(MatDialogRef<DialogBoxComponent>);
   data = inject<any>(MAT_DIALOG_DATA);
   myForm: FormGroup = new FormGroup({
-    id: new FormControl(this.data?.id ?? null),
+    id: new FormControl(this.data?.id ?? Math.floor(Math.random() * 101).toString()),
     title: new FormControl(this.data?.title ?? ""),
     price: new FormControl(this.data?.price ?? ""),
     year: new FormControl(this.data?.year ?? ""),
@@ -41,7 +43,11 @@ export class DialogBoxComponent implements OnInit {
     image: new FormControl("/assets/images/mcbook.jpg")
   });
 
-  isNew:boolean = true;
+
+  send() {
+    this.sharedDataService.updateData(this.isNew);
+  }
+
 
   onNoClick(): void {
     this.dialogRef.close(null);
@@ -65,6 +71,7 @@ export class DialogBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.data) this.isNew = false
+    if(this.data) this.isNew = false;
+    this.send()
   }
 }
