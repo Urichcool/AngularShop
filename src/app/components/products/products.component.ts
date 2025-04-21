@@ -41,11 +41,16 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  addToBasket(product: IProduct) {
+    this.productsService.postProductToBasket(product).subscribe();
+    this.reloadPage();
+  }
+
   deleteItem(id: number) {
     this.productsService
       .deleteProduct(id)
       .subscribe((data) => console.log(data));
-      this.reloadPage();
+    this.reloadPage();
   }
 
   openDialog(product?: IProduct): void {
@@ -60,7 +65,7 @@ export class ProductsComponent implements OnInit {
       this.sharedDataService.currentData$.subscribe((data) => {
         this.isNewProduct = data;
       });
-      
+
       if (data) {
         if (this.isNewProduct) {
           this.postData(data);
@@ -72,8 +77,8 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  reloadPage(){
-    window.location.reload()
+  reloadPage() {
+    window.location.reload();
   }
 
   postData(data: IProduct) {

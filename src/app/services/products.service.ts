@@ -29,4 +29,8 @@ export class ProductsService {
   updateProduct(product:IProduct){
     return this.http.put<IProduct>(`${this.url}/${product.id}`, product)
   }
+
+  postProductToBasket(product: IProduct){
+    return this.http.post<IProduct>('http://localhost:3000/basket', product)
+  }
 }

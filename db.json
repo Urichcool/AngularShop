@@ -26,5 +26,33 @@
         "display": "Retina"
       }
     }
+  ],
+  "basket": [
+    {
+      "id": "1",
+      "title": "MacBook Air",
+      "price": "1700",
+      "year": "2027",
+      "image": "/assets/images/mcbook.jpg",
+      "configure": {
+        "chip": "M1",
+        "SSD": "",
+        "memory": "8 GB",
+        "display": "Retina"
+      }
+    },
+    {
+      "id": "4",
+      "title": "MacBook Air",
+      "price": "800",
+      "year": 2023,
+      "image": "/assets/images/mcbook.jpg",
+      "configure": {
+        "chip": "M1",
+        "SSD": "",
+        "memory": "16 GB",
+        "display": "Retina"
+      }
+    }
   ]
 }
