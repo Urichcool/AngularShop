@@ -7,6 +7,7 @@ import { IProduct } from '../interfaces/products.interface';
 })
 export class ProductsService {
   url: string = 'http://localhost:3000/products';
+  basketUrl: string = 'http://localhost:3000/basket';
 
   http = inject(HttpClient);
 
@@ -14,7 +15,7 @@ export class ProductsService {
     return this.http.get<IProduct[]>(this.url);
   }
 
-  getProduct(id: number) {
+  getProduct(id: string) {
     return this.http.get<IProduct>(`${this.url}/${id}`);
   }
 
@@ -22,7 +23,7 @@ export class ProductsService {
     return this.http.post<IProduct>(this.url, product)
   }
 
-  deleteProduct(id:number){
+  deleteProduct(id:string){
     return this.http.delete<any>(`${this.url}/${id}`)
   }
 
@@ -31,6 +32,16 @@ export class ProductsService {
   }
 
   postProductToBasket(product: IProduct){
-    return this.http.post<IProduct>('http://localhost:3000/basket', product)
+    return this.http.post<IProduct>(this.basketUrl, product)
   }
+
+
+  getBasketProducts() {
+    return this.http.get<IProduct[]>(this.basketUrl);
+  }
+
+  updateQuantity(id:string, quantity:number){
+    return this.http.patch<IProduct[]>(`${this.basketUrl}/${id}`, {quantity});
+  }
+  
 }

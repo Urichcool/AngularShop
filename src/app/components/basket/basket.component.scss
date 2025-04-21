@@ -1,0 +1,22 @@
+.container{
+    margin: 0 auto 0;
+    display: grid;
+    grid-gap: 15px;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: flex-start;
+}
+
+.product-card{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin-right: 4px;
+}
+
+.button{
+    margin-right: 5px;
+}
+
+.example-spacer{
+    flex: 1 1 auto;
+}

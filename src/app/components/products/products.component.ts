@@ -34,19 +34,23 @@ export class ProductsComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   sharedDataService = inject(SharedDataService);
   isNewProduct: boolean = true;
+  basket:IProduct[] = [];
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((data) => {
       this.products = data;
     });
+
+
   }
 
   addToBasket(product: IProduct) {
+    product.quantity = 1;
     this.productsService.postProductToBasket(product).subscribe();
     this.reloadPage();
   }
 
-  deleteItem(id: number) {
+  deleteItem(id: string) {
     this.productsService
       .deleteProduct(id)
       .subscribe((data) => console.log(data));
